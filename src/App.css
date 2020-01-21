@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+.app-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 60px 10fr;
+  font: normal 20px sans-serif;
+  grid-gap: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.app-header {
+  background-color: #3f51b54f;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.files-zone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropzone {
+  border: 2px dashed #3f51b54f;
+  background-color: #3f51b51f;
+  display: grid;
+  align-items: center;
+  transition: all 0.5s ease-out;
+  min-height: 200px;
+}
+
+.dropzone:focus, .dropzone:hover {
+  outline: none;
+  border-style: solid;
+  border-color: #3f51b5a6;
+  cursor: pointer;
+}
+
+.dropzone .label {
+  margin: 0 auto;
+  font: normal 20px sans-serif;
+  color: #3f51b54d;
+  transition: color 0.5s ease-out;
+}
+
+.dropzone:focus .label, .dropzone:hover .label {
+  color: #3f51b5f7;
+}
+
+.dropzone input {
+  display: none;
+}
+
+.files-wrapper {
+  font: normal 20px sans-serif;
+  color: #3f51b5fa;
+  display: grid;
+  grid-template-rows: 25px 1fr;
+  grid-gap: 10px;
+  align-items: left;
+}
+
+.files-list {
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-rows: minmax(auto, 40px);
+}
+
+.files-list .item {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border: 1px solid #3f51b51f;
+  padding: 8px;
+}
+
+.files-list .item .info {
+  font-size: 18px;
+}
+
+.files-list .item .info .name {
+  margin-right: 20px;
+}
+
+.files-list .item .actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.files-list .item .actions button {
+  transition: all 0.5s ease-out;
+  background: #3f51b51f;
+  border: 2px solid #3f51b51f;
+  color: #3f51b59e;
+}
+
+.files-list .item .actions button:hover {
+  background: #3f51b51f;
+  border-color: #3f51b59e;
+  color: #3f51b59e;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.files-list .item .actions button:focus {
+  outline: 2px solid #3f51b51f;
 }
