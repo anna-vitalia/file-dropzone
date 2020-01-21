@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = (props) => {
   return (
     <div className='app-wrapper'>
       <header className='app-header'>
