@@ -1,17 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FileDropzone from './components/FileDropzone/FileDropzone.jsx';
 
-const App = (props) => {
+const App = () => {
   return (
     <div className='app-wrapper'>
       <header className='app-header'>
           File dropzone
       </header>
       <div className='app-wrapper-content'>
-        <div className='files-zone'>
+        {/* <div className='files-zone'>
           <div className='dropzone'>
-            <input type='file' />
+            <input type='file' onChange={(e) => handleFileLoad(e)}/>
             <p className='label'> drag-ndrop here your files </p>
           </div>
           <div className='files-wrapper'>
@@ -28,8 +29,8 @@ const App = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div>*/}
+          <FileDropzone />
       </div>
     </div>
   );
