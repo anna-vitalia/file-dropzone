@@ -3,36 +3,45 @@ import React from 'react';
 class FileDropzone extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {file: '', fileUrl: '', fileSize: ''};
+    this.state = {files: ''};
+    this.inputRef = React.createRef();
   }
 
-  _handleFileChange(event) {
+  _handleOnDrag(event) {
     event.preventDefault();
-
-    let reader = new FileReader();
-    let file = event.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        fileUrl: reader.result,
-        fileSize: file.size
-      });
-    }
-    reader.readAsDataURL(file)
   }
 
-  _testCallback() {
-    this.props.testCallback();
+  _handleOnDrop(event) {
+    event.preventDefault();
+    let dataTransfer = event.dataTransfer;
+    let files = dataTransfer.files;
+    //todo: если нужен только один файл
+    this._handleFileChange(files);
+  }
+
+  _handleFileChange(filesList) {
+    this.setState({
+      files: filesList,
+    });
+  }
+
+  _handleInputFileChange(event) {
+    event.preventDefault();
+    let files = event.target.files;
+    this._handleFileChange(files);
+  }
+
+  _handleOnClick(event) {
+    this.inputRef.current.click();
   }
 
   render() {
+    console.log(this.state);
     return (
-      <div className="previewComponent">
-        <input type="file" 
-          onChange={(event)=>{this._handleFileChange(event); this._testCallback()}} />
-        <div className="fileInfo">
-          { this.state.fileUrl } <p>{ this.state.fileSize }</p> 
+      <div className="dropzone" onClick={(event) => this._handleOnClick(event)} onDragEnter ={(event)=>{this._handleOnDrag(event)}} onDragOver={(event)=>{this._handleOnDrag(event)}} onDrop={(event)=>{this._handleOnDrop(event)}}>
+        <input type="file"  ref={this.inputRef} onChange={(event) => {this._handleInputFileChange(event)}} />
+        <div className="label">
+          drag and drop here your files 
         </div>
       </div>
     )
