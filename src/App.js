@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FileDropzone from './components/FileDropzone/FileDropzone.jsx';
+import Form from './components/Form/Form.jsx';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
           File dropzone
       </header>
       <div className='app-wrapper-content'>
-          <FileDropzone />
+          <Form />
       </div>
     </div>
   );
