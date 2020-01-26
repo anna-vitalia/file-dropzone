@@ -82,28 +82,3 @@
 .files-list .item .info .name {
   margin-right: 20px;
 }
-
-.files-list .item .actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-}
-
-.files-list .item .actions button {
-  transition: all 0.5s ease-out;
-  background: #3f51b51f;
-  border: 2px solid #3f51b51f;
-  color: #3f51b59e;
-}
-
-.files-list .item .actions button:hover {
-  background: #3f51b51f;
-  border-color: #3f51b59e;
-  color: #3f51b59e;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.files-list .item .actions button:focus {
-  outline: 2px solid #3f51b51f;
-}
