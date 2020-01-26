@@ -14,9 +14,9 @@ const Form = () => {
 
     return (
       <div className='files-zone'>
-        <div className="dropzone" {...getContainerProps()}>
+        <div className='dropzone' {...getContainerProps()}>
           <input {...getInputProps()} />
-          <div className="label">
+          <div className='label'>
             <p>drag and drop here your files </p>
           </div>
         </div>

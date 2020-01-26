@@ -96,19 +96,16 @@ export function FileDropzone({
   }, [] );
 
   const addFiles = (files) => {
-    let currentFiles = (multiple) ? state.acceptedFiles : [];
-    let acceptedFiles = [];
-    let rejectedFiles = [];
+    let acceptedFiles = (multiple) ? state.acceptedFiles : [];
+    let rejectedFiles = (multiple) ? state.rejectedFiles : [];
     for (var i = 0; i < files.length; i++) {
-      currentFiles.push(files[i]);
-    }
-    currentFiles.forEach(file => {
-      if (fileAccepted(file) && fileMatchSize(file)) {
-        acceptedFiles.push(file)
+      if (fileAccepted(files[i]) && fileMatchSize(files[i])) {
+        acceptedFiles.push(files[i])
       } else {
-        rejectedFiles.push(file)
+        rejectedFiles.push(files[i])
       }
-    })
+    }
+
     dispatch({
       type: 'setAllFiles',
       acceptedFiles,
@@ -162,7 +159,7 @@ export function FileDropzone({
     };
 
     return ( props )
-  }, []);
+  }, [handleOnChange, multiple]);
 
   return {
     ...state,
