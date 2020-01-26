@@ -1,4 +1,16 @@
-import React, {useCallback, useRef, useMemo} from 'react';
+import React, {useCallback, useRef, useMemo, useReducer} from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'setAcceptedFiles':
+      return {
+        ...state,
+        acceptedFiles: action.acceptedFiles,
+      }
+    default:
+      return state
+  }
+}
 
 const initialState = {
   allLoadedFiles: [],
@@ -10,7 +22,7 @@ export function FileDropzone({multiple = true} = {}) {
 
   const refDropzone = useRef(null);
   const refInput = useRef(null);
-  const state = initialState;
+  const [state, dispatch] = useReducer(reducer, initialState);
   //const fileFilter = {};
 
   const handleOnDrag = useCallback( event => {
@@ -42,16 +54,23 @@ export function FileDropzone({multiple = true} = {}) {
   }, [] );
 
   const changeFilesList = (files) => {
+    let acceptedFiles = [];
     for (var i = 0; i < files.length; i++) {
-      state.acceptedFiles.push(files[i]);
+      acceptedFiles.push(files[i]);
     }
+    dispatch({
+      acceptedFiles,
+      type: 'setAcceptedFiles'
+    })
+    console.log(state.acceptedFiles);
   };
 
   const getContainerProps = useMemo(() => () => {
     const props = {
       ref: refDropzone,
       onClick: handleOnClick,
-      onDrag: handleOnDrag,
+      onDragEnter: handleOnDrag,
+      onDragOver: handleOnDrag,
       onDrop: handleOnDrop,
     };
 
